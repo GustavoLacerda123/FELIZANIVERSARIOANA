@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Feliz Aniversário, Minha Aninha! ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #ffcdd2, #f8bbd0);
+            color: #b71c1c;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        h1 {
+            margin: 25px 15px 0;
+            font-size: 2.8rem;
+            font-family: 'Parisienne', cursive;
+            color: #880e4f;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            line-height: 1.2;
+        }
+        
+        .subtitulo {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin: 20px 15px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            line-height: 1.6;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border: 1px solid #ffebee;
+        }
+        
+        .mensagem {
+            margin: 25px 15px;
+            padding: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #fce4ec;
+        }
+        
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 30px 15px;
+            padding: 10px;
+        }
+        
+        .foto {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 3px solid white;
+            transition: transform 0.3s ease;
+        }
+        
+        .foto img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+        }
+        
+        .foto:active {
+            transform: scale(0.95);
+        }
+        
+        .coracao {
+            color: #d81b60;
+            font-size: 1.5rem;
+            animation: pulsar 1.8s infinite;
+            display: inline-block;
+            margin: 0 3px;
+        }
+        
+        @keyframes pulsar {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        .mensagem-final {
+            margin: 25px 15px 70px;
+            padding: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #fce4ec;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .icone-casal {
+            width: 40px;
+            height: 40px;
+            margin: 10px auto;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23d81b60" d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: flutuar 3s ease-in-out infinite;
+        }
+        
+        @keyframes flutuar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .petala {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.8;
+        }
+        
+        .player-musica {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 90%;
+            max-width: 300px;
+        }
+        
+        .botao-musica {
+            padding: 12px 25px;
+            border-radius: 25px;
+            background: #d81b60;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-weight: 600;
+        }
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+                margin-top: 40px;
+            }
+            
+            .subtitulo, .mensagem, .mensagem-final {
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 25px;
+            }
+            
+            .galeria {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                gap: 20px;
+            }
+            
+            .foto:hover {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Feliz Aniversário, Minha Aninha! <span class="coracao">❤️</span></h1>
+    
+    <div class="subtitulo">
+        <p>13 de Maio - O Dia Mais Especial do Ano. Como é bom celebrar a vida da minha vida!</p>
+        <p>Minha Aninha... Hoje você começa mais um ciclo de 365 dias e só quero te pedir, aproveitar que 
+        falei de ciclos, que o nosso seja eterno. Você é bênção em minha vida, é luz, é doçura.</p>
+        <p>Eu te amo desse jeitinho que você é, e tenho certeza que é você que quero para o resto de minha vida.</p>
+    </div>
+    
+    <div class="mensagem">
+        <p>Querida Minha Aninha,</p>
+        <p>Este site foi feito para celebrar cada momento incrível que vivemos juntos. Cada foto aqui guarda uma memória especial do nosso amor...</p>
+        <p>Desde nosso primeiro encontro até os planos que ainda vamos realizar, cada instante com você é um presente.</p>
+        <p>Te amo mais que tudo no mundo! <span class="coracao">💕</span></p>
+        <p>Com todo meu amor,<br>Seu Gugu</p>
+    </div>
+
+    <!-- GALERIA DE FOTOS OTIMIZADA PARA MOBILE -->
+    <div class="galeria">
+        <div class="foto"><img src="imagens/imagem1.jpg" alt="Nosso primeiro encontro"></div>
+        <div class="foto"><img src="imagens/imagem2.jpg" alt="Dia especial na praia"></div>
+        <div class="foto"><img src="imagens/imagem4.jpg" alt="Nosso jantar romântico"></div>
+        <div class="foto"><img src="imagens/imagem5.jpg" alt="Viagem inesquecível"></div>
+        <div class="foto"><img src="imagens/imagem6.jpg" alt="Momento divertido"></div>
+        <div class="foto"><img src="imagens/imagem7.jpg" alt="Abraço aconchegante"></div>
+        <div class="foto"><img src="imagens/imagem8.jpg" alt="Celebrando juntos"></div>
+        <div class="foto"><img src="imagens/imagem9.jpg" alt="Sorrisos compartilhados"></div>
+        <div class="foto"><img src="imagens/imagem10.jpg" alt="Nosso amor em preto e branco"></div>
+        <div class="foto"><img src="imagens/imagem11.jpg" alt="Para sempre nós dois"></div>
+    </div>
+
+    <!-- MENSAGEM FINAL -->
+    <div class="mensagem-final">
+        <div class="coracoes-animados">
+            <div class="coracao-pequeno">❤️</div>
+            <div class="coracao-grande">❤️</div>
+            <div class="coracao-pequeno">❤️</div>
+          </div>
+          
+          <style>
+          .coracoes-animados {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 15px auto;
+            height: 50px;
+          }
+          
+          .coracao-pequeno {
+            font-size: 1.5rem;
+            animation: pulsar 2s infinite ease-in-out;
+            opacity: 0.8;
+          }
+          
+          .coracao-grande {
+            font-size: 2.5rem;
+            animation: pulsar 1.5s infinite ease-in -out;
+            transform-origin: center;
+          }
+          
+          @keyframes pulsar {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+          }
+          </style>
+        <p>
+            E para finalizar, quero deixar uma mensagem dizendo que independente das circunstâncias 
+            e de como vão as coisas, eu estou aqui, ao pé da letra mesmo, sempre agarrado no seu 
+            cangote. Você foi minha melhor escolha então é mais que prazeroso cuidar e proteger 
+            minha melhor escolha.
+        </p>
+        <p style="
+            margin: 15px 0 0 0;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #c2185b;
+        ">
+            Eu te amo, Ana Clara!
+        </p>
+    </div>
+
+    <!-- MÚSICA DE FUNDO COM CONTROLE OTIMIZADO PARA MOBILE -->
+    <audio id="musicaRomantica" loop>
+        <source src="musica/musica-romantica.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="player-musica">
+        <button class="botao-musica" onclick="tocarMusica()">
+            ▶️ Tocar Nossa Música
+        </button>
+    </div>
+
+    <script>
+        // Controle de música otimizado para mobile
+        const musica = document.getElementById('musicaRomantica');
+        const botaoMusica = document.querySelector('.botao-musica');
+        let musicaTocando = false;
+        
+        function tocarMusica() {
+            if (musicaTocando) {
+                musica.pause();
+                botaoMusica.textContent = '▶️ Tocar Nossa Música';
+                musicaTocando = false;
+            } else {
+                musica.play()
+                    .then(() => {
+                        botaoMusica.textContent = '⏸️ Pausar Música';
+                        musicaTocando = true;
+                        
+                        // Feedback visual
+                        botaoMusica.style.backgroundColor = '#c2185b';
+                        setTimeout(() => {
+                            botaoMusica.style.backgroundColor = '#d81b60';
+                        }, 300);
+                    })
+                    .catch(e => {
+                        alert('Para tocar a música, por favor toque no botão novamente.');
+                        console.error("Erro ao tocar música:", e);
+                    });
+            }
+        }
+
+        // Tenta tocar automaticamente (com fallback)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dispara em qualquer interação do usuário
+            const tentarAutoplay = () => {
+                musica.play()
+                    .then(() => {
+                        botaoMusica.textContent = '⏸️ Pausar Música';
+                        musicaTocando = true;
+                    })
+                    .catch(e => console.log("Autoplay não permitido:", e));
+            };
+            
+            document.addEventListener('click', tentarAutoplay, { once: true });
+            document.addEventListener('touchstart', tentarAutoplay, { once: true });
+        });
+
+        // Efeito de pétalas de rosas otimizado para performance mobile
+        const criarPetala = () => {
+            if (document.hidden) return; // Não animar quando a página não está visível
+            
+            const petala = document.createElement('div');
+            petala.className = 'petala';
+            
+            // Cores aleatórias
+            const cores = ['#ff4081', '#f50057', '#c2185b', '#ff80ab'];
+            const cor = cores[Math.floor(Math.random() * cores.length)];
+            
+            petala.style.backgroundImage = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="${cor}" d="M50 0C30 10 10 30 0 50c10 20 30 40 50 50 20-10 40-30 50-50C90 30 70 10 50 0z"/></svg>')`;
+            petala.style.left = Math.random() * window.innerWidth + 'px';
+            petala.style.top = '-30px';
+            document.body.appendChild(petala);
+
+            const animacao = petala.animate([
+                { top: '-30px', opacity: 0, transform: 'rotate(0deg) scale(0.5)' },
+                { top: '10%', opacity: 0.8, transform: 'rotate(90deg) scale(1)' },
+                { top: window.innerHeight + 'px', opacity: 0, transform: 'rotate(180deg) scale(0.5)' }
+            ], {
+                duration: 4000 + Math.random() * 3000,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+            });
+
+            animacao.onfinish = () => petala.remove();
+        };
+
+        // Controla a quantidade de pétalas baseado na performance
+        let intervaloPetala = setInterval(criarPetala, 500);
+        
+        // Reduz animações quando a página não está visível
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                clearInterval(intervaloPetala);
+            } else {
+                intervaloPetala = setInterval(criarPetala, 500);
+            }
+        });
+        
+        // Melhoria: Carregamento progressivo das imagens
+        document.addEventListener('DOMContentLoaded', function() {
+            const fotos = document.querySelectorAll('.foto img');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.getAttribute('src');
+                        observer.unobserve(img);
+                    }
+                });
+            }, { rootMargin: '200px' });
+            
+            fotos.forEach(img => {
+                observer.observe(img);
+            });
+        });
+    </script>
+</body>
+</html>
